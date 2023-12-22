@@ -16,14 +16,14 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "tb_produto")
+@Table(name = "tb_produtos")
 public class Produto {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 	
-	@NotBlank(message = "Nome do produto é obrigatório.")
+	@NotBlank(message = "O do produto é obrigatório.")
 	@Size(min = 5, max = 100, message = "Nome deve ter entre 5 e 100 caracteres.")
 	@Column(length = 100)
 	String nome;
@@ -40,6 +40,7 @@ public class Produto {
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
 	Categoria categoria;
+	
 	public Long getId() {
 		return id;
 	}
@@ -72,18 +73,14 @@ public class Produto {
 		this.preco = preco;
 	}
 
-	public Produto getCategoria1() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public Produto getCategoria() {
-		// TODO Auto-generated method stub
 		return null;
 	}
-	
 
-
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 	
 	
 }
